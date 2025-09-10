@@ -1,9 +1,11 @@
 
+//Async Handler =Promise wraper
+//" jo async function hai usko promise mein wrap kar do, agar error aye to express ke next ko pass kar do  "
 
 const asyncHandler = (requestHandler) => {
-    (req, res, next) => { //yeh Express.js ka standard middleware pattern hai 
+     return (req, res, next) => { //yeh Express.js ka standard middleware pattern hai 
         Promise.resolve(requestHandler(req, res, next))
-            .catch((err) => next(err))
+            .catch((err) =>next(err))
     }
 }
 
